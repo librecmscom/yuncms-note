@@ -15,7 +15,7 @@
     "xutl/yii2-snowflake": "~1.0",
     "xutl/yii2-fmt-asset": "~1.0",
     "yuncms/yuncms-user": "~2.0",
-    "yuncms/yuncms-collection": "~1.0.0"
+    "yuncms/yuncms-collection": "~2.0"
   },
   "autoload": {
     "psr-4": {
