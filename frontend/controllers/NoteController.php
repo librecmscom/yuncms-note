@@ -105,6 +105,7 @@ class NoteController extends Controller
      * @param int $id
      * @return \yii\web\Response
      * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
      */
     public function actionSetType($id)
     {
@@ -129,6 +130,7 @@ class NoteController extends Controller
      * @param string $id
      *
      * @return string
+     * @throws NotFoundHttpException
      */
     public function actionView($id)
     {
@@ -151,6 +153,10 @@ class NoteController extends Controller
      *
      * @return mixed
      * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
+     * @throws \Exception
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function actionDelete($id)
     {
@@ -167,6 +173,7 @@ class NoteController extends Controller
      * 获取打印
      * @param string $id
      * @return string|Response
+     * @throws NotFoundHttpException
      */
     public function actionPrint($id)
     {
@@ -185,6 +192,7 @@ class NoteController extends Controller
      * 获取原始笔记
      * @param string $id
      * @return string|Response
+     * @throws NotFoundHttpException
      */
     public function actionRaw($id)
     {
@@ -202,6 +210,8 @@ class NoteController extends Controller
      * 下载原始笔记
      * @param string $id
      * @return string|Response
+     * @throws NotFoundHttpException
+     * @throws \yii\web\RangeNotSatisfiableHttpException
      */
     public function actionDownload($id)
     {

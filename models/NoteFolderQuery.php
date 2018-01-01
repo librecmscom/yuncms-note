@@ -2,12 +2,14 @@
 
 namespace yuncms\note\models;
 
+use yii\db\ActiveQuery;
+
 /**
  * This is the ActiveQuery class for [[NoteFolder]].
  *
  * @see NoteFolder
  */
-class NoteFolderQuery extends \yii\db\ActiveQuery
+class NoteFolderQuery extends ActiveQuery
 {
     /*public function active()
     {

@@ -3,6 +3,7 @@
 namespace yuncms\note\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%note_folder}}".
@@ -13,7 +14,7 @@ use Yii;
  * @property integer $created_at
  * @property integer $updated_at
  */
-class NoteFolder extends \yii\db\ActiveRecord
+class NoteFolder extends ActiveRecord
 {
     /**
      * @inheritdoc

@@ -7,7 +7,6 @@
 namespace yuncms\note;
 
 use Yii;
-use yii\base\InvalidParamException;
 
 /**
  * Class Module
