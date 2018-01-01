@@ -90,7 +90,7 @@ class Note extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
+            'id' => Yii::t('note', 'ID'),
             'title' => Yii::t('note', 'Title'),
             'uuid' => Yii::t('note', 'UUID'),
             'type' => Yii::t('note', 'Type'),
