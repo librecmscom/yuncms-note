@@ -3,6 +3,7 @@
 namespace yuncms\note\migrations;
 
 use yii\db\Migration;
+use yii\db\Query;
 
 class M180101103840Add_backend_menu extends Migration
 {
@@ -18,7 +19,7 @@ class M180101103840Add_backend_menu extends Migration
             'data' => NULL
         ]);
 
-        $id = (new \yii\db\Query())->select(['id'])->from('{{%admin_menu}}')->where(['name' => '笔记管理', 'parent' => 8])->scalar($this->getDb());
+        $id = (new Query())->select(['id'])->from('{{%admin_menu}}')->where(['name' => '笔记管理', 'parent' => 8])->scalar($this->getDb());
         $this->batchInsert('{{%admin_menu}}', ['name', 'parent', 'route', 'visible', 'sort'], [
             ['笔记查看', $id, '/note/note/view', 0, NULL],
             ['创建笔记', $id, '/note/note/create', 0, NULL],
@@ -28,7 +29,7 @@ class M180101103840Add_backend_menu extends Migration
 
     public function safeDown()
     {
-        $id = (new \yii\db\Query())->select(['id'])->from('{{%admin_menu}}')->where(['name' => '笔记管理', 'parent' => 8])->scalar($this->getDb());
+        $id = (new Query())->select(['id'])->from('{{%admin_menu}}')->where(['name' => '笔记管理', 'parent' => 8])->scalar($this->getDb());
         $this->delete('{{%admin_menu}}', ['parent' => $id]);
         $this->delete('{{%admin_menu}}', ['id' => $id]);
     }
