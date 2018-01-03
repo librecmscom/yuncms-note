@@ -4,7 +4,8 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use xutl\highlightjs\HighlightJs;
 
-/* @var $this yii\web\View */
+/* @var yii\web\View $this */
+/* @var yuncms\note\models\Note $model */
 
 $this->title = Html::encode($model->title) . ' - ' . Yii::t('note', 'Notes');
 $this->context->layout = false;

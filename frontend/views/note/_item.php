@@ -2,7 +2,8 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
-
+/* @var $this yii\web\View */
+/* @var yuncms\note\models\Note $model */
 ?>
 <div class="summary">
     <h2 class="title"><a href="<?= Url::to(['/note/note/view', 'id' => $model->id]); ?>"

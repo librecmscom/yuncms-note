@@ -8,7 +8,6 @@ namespace yuncms\note\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-use yuncms\collection\models\Collection;
 
 /**
  * Class Note
@@ -116,12 +115,22 @@ class Note extends ActiveRecord
     }
 
     /**
-     * Collection Relation
+     * AudioCollection Relation
      * @return \yii\db\ActiveQueryInterface
      */
     public function getCollections()
     {
-        return $this->hasMany(Collection::className(), ['model_id' => 'id'])->onCondition(['model' => static::className()]);
+        return $this->hasMany(NoteCollection::className(), ['model_id' => 'id']);
+    }
+
+    /**
+     * 是否收藏
+     * @param integer $user_id
+     * @return bool
+     */
+    public function isCollected($user_id)
+    {
+        return $this->getCollections()->andWhere(['user_id' => $user_id])->exists();
     }
 
     /**

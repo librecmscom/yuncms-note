@@ -5,8 +5,8 @@ use xutl\select2\Select2;
 use yuncms\note\models\Note;
 
 /* @var $this yii\web\View */
-/* @var $model yuncms\note\models\Note */
-/* @var $form yii\widgets\ActiveForm */
+/* @var yuncms\note\models\Note $model */
+/* @var yii\widgets\ActiveForm $form */
 ?>
 <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
 

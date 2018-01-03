@@ -1,10 +1,12 @@
 <?php
-/* @var $this yii\web\View */
 
 use yii\helpers\Url;
 use yii\helpers\Html;
 use xutl\highlightjs\HighlightJs;
 use yuncms\note\frontend\assets\NoteAsset;
+
+/* @var $this yii\web\View */
+/* @var yuncms\note\models\Note $model */
 
 NoteAsset::register($this);
 
@@ -16,7 +18,7 @@ $this->title = Html::encode($model->title) . ' - ' . Yii::t('note', 'Notes');
         <h4 class="page-title">
             <i class="glyphicon glyphicon-tags"></i> <?= Html::encode($model->title); ?>
 
-            <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isCollected(get_class($model), $model->id)): ?>
+            <?php if (!Yii::$app->user->isGuest && $model->isCollected($model->id)): ?>
                 <button data-target="collect-button" class="btn btn-default btn-sm"
                         data-loading-text="<?= Yii::t('note', 'Loading...'); ?>"
                         data-source_type="note"
