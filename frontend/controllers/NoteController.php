@@ -15,7 +15,9 @@ use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use yii\web\ForbiddenHttpException;
+use yii\web\ServerErrorHttpException;
 use yuncms\note\models\Note;
+use yuncms\note\models\NoteCollection;
 
 /**
  * Class NoteController
@@ -43,7 +45,7 @@ class NoteController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['create', 'set-type', 'update', 'delete'],
+                        'actions' => ['create', 'set-type', 'update', 'delete', 'collection'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -167,6 +169,34 @@ class NoteController extends Controller
             return $this->redirect(['index']);
         }
         throw new ForbiddenHttpException(Yii::t('yii', 'You are not allowed to perform this action.'));
+    }
+
+    /**
+     * 收藏文章
+     * @return array
+     * @throws NotFoundHttpException
+     * @throws ServerErrorHttpException
+     * @throws \Exception
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
+    public function actionCollection()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $source = $this->findModel(Yii::$app->request->post('model_id'));
+        if (($collect = NoteCollection::find()->where(['model_id' => $source->id, 'user_id' => Yii::$app->user->getId()])->one()) != null) {
+            $collect->delete();
+            return ['status' => 'unCollect'];
+        } else {
+            $model = new NoteCollection();
+            $model->subject = $source->title;
+            $model->model_id = $source->id;
+            $model->load(Yii::$app->request->post(), '');
+            if ($model->save() === false && !$model->hasErrors()) {
+                throw new ServerErrorHttpException('Failed to update the object for unknown reason.');
+            }
+            return ['status' => 'collected'];
+        }
     }
 
     /**

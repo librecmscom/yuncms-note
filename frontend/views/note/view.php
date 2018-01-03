@@ -4,11 +4,12 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use xutl\highlightjs\HighlightJs;
 use yuncms\note\frontend\assets\NoteAsset;
-
+use yuncms\note\frontend\assets\NotePluginAsset;
 /* @var $this yii\web\View */
 /* @var yuncms\note\models\Note $model */
 
 NoteAsset::register($this);
+NotePluginAsset::register($this);
 
 $this->title = Html::encode($model->title) . ' - ' . Yii::t('note', 'Notes');
 ?>
@@ -19,16 +20,14 @@ $this->title = Html::encode($model->title) . ' - ' . Yii::t('note', 'Notes');
             <i class="glyphicon glyphicon-tags"></i> <?= Html::encode($model->title); ?>
 
             <?php if (!Yii::$app->user->isGuest && $model->isCollected($model->id)): ?>
-                <button data-target="collect-button" class="btn btn-default btn-sm"
+                <button data-target="note-collect" class="btn btn-default btn-sm"
                         data-loading-text="<?= Yii::t('note', 'Loading...'); ?>"
-                        data-source_type="note"
-                        data-source_id="<?= $model->id ?>"> <?= Yii::t('note', 'Collected'); ?>
+                        data-model_id="<?= $model->id ?>"> <?= Yii::t('note', 'Collected'); ?>
                 </button>
             <?php else: ?>
-                <button data-target="collect-button" class="btn btn-default btn-sm"
+                <button data-target="note-collect" class="btn btn-default btn-sm"
                         data-loading-text="<?= Yii::t('note', 'Loading...'); ?>"
-                        data-source_type="note"
-                        data-source_id="<?= $model->id ?>"> <?= Yii::t('note', 'Collect'); ?>
+                        data-model_id="<?= $model->id ?>"> <?= Yii::t('note', 'Collect'); ?>
                 </button>
             <?php endif; ?>
         </h4>

@@ -10,7 +10,7 @@ namespace yuncms\note\models;
 use Yii;
 use yuncms\collection\models\Collection;
 use yuncms\collection\models\CollectionQuery;
-use yuncms\article\jobs\UpdateCounterJob;
+use yuncms\note\jobs\UpdateCounterJob;
 
 /**
  * Class NoteCollection
