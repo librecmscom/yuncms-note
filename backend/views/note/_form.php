@@ -16,8 +16,6 @@ use xutl\inspinia\ActiveForm;
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>    <div class="hr-line-dashed"></div>
 
-    <?= $form->field($model, 'size')->textInput() ?>    <div class="hr-line-dashed"></div>
-
 
 <div class="form-group">
     <div class="col-sm-4 col-sm-offset-2">
